@@ -10,6 +10,38 @@
 // Icons
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
+body {
+    display: flex;
+    width: 100%;
+}
+
 body > div {
     background-color: $gray-300;
 }
+
+body > div:first-child {
+    min-height: 100vh;
+    background-color: $blue-700;
+    & * {
+        color: white;
+    }
+}
+
+body > div:last-child {
+    flex: 1;
+    min-height: 100%;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    .navigation {
+        width: 100%;
+        & > div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+}
+
