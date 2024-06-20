@@ -5,13 +5,35 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="dashboard" id="dashboard">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+            <div class="w-100">
+                <div class="calendar"></div>
             </div>
         </div>
     </div>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    @vite('node_modules/js-year-calendar')
+    <script type="module">
+        // import Calendar from 'node_modules/js-year-calendar';
+        // import '/node_modules/js-year-calendar/locales/js-year-calendar.es';
+        new Calendar('.calendar')
+    </script>
 </x-app-layout>

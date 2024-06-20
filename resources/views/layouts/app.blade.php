@@ -15,43 +15,8 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="sidebar-header">
-                <a class="sidebar-brand">PRUEBA TÉCNICA</a>
-            </div>
-            <div class="sidebar-header">
-                <a class="sidebar-brand">SOLUCIONES INFORMÁTICAS LJ</a>
-            </div>
-            <div class="sidebar-header">
-                <a class="sidebar-brand">MENU</a>
-            </div>
-            <div class="sidebar-nav">
-                <div class="sidenav">
-                    <a class="sidebar-item">
-                        <div class="sidebar-item-content">
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
-                            </x-nav-link>
-                        </div>
-                    </a>
-                    <a class="sidebar-item">
-                        <div class="sidebar-item-content">
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Días Festivos') }}
-                            </x-nav-link>
-                        </div>
-                    </a>
-                    <a class="sidebar-item">
-                        <div class="sidebar-item-content">
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Usuarios') }}
-                            </x-nav-link>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="min-h-screen bg-gray-400">
+        @include('layouts.sidebar')
+        <div class="bg-gray-400">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
