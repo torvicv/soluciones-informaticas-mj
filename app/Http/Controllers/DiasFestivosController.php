@@ -23,6 +23,19 @@ class DiasFestivosController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function json()
+    {
+        $diasFestivos = DiasFestivos::all();
+        return response()->json(
+            [
+                'dias_festivos' => $diasFestivos
+            ]
+        );
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

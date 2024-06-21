@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('dias-festivos')->group(function () {
         Route::get('/', [DiasFestivosController::class, 'index'])->name('dias-festivos.index');
         Route::get('/create', [DiasFestivosController::class, 'create'])->name('dias-festivos.create');
+        Route::get('/json', [DiasFestivosController::class, 'json']);
         Route::post('/', [DiasFestivosController::class,'store'])->name('dias-festivos.store');
         Route::get('/{diasFestivos}/edit', [DiasFestivosController::class, 'edit'])->name('dias-festivos.edit');
         Route::get('/{diasFestivos}', [DiasFestivosController::class, 'show'])->name('dias-festivos.show');

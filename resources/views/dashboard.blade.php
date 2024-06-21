@@ -30,10 +30,7 @@
           </div>
         </div>
       </div>
-    @vite('node_modules/js-year-calendar')
-    <script type="module">
-        // import Calendar from 'node_modules/js-year-calendar';
-        // import '/node_modules/js-year-calendar/locales/js-year-calendar.es';
-        new Calendar('.calendar')
-    </script>
+      @push('scripts-body')
+        @vite(['resources/js/scripts/calendar.js'])
+    @endpush
 </x-app-layout>
