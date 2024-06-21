@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DiasFestivosRequest;
+use App\Http\Requests\UpdateDiasFestivosRequest;
 use App\Models\DiasFestivos;
 use Illuminate\Http\Request;
 
@@ -52,15 +53,19 @@ class DiasFestivosController extends Controller
      */
     public function edit(DiasFestivos $diasFestivos)
     {
-        //
+        return response()->json([
+            'dia_festivo' => $diasFestivos
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DiasFestivos $diasFestivos)
+    public function update(UpdateDiasFestivosRequest $request, DiasFestivos $diasFestivos)
     {
-        //
+        $validated = $request->validated();
+        $diasFestivos->update($validated);
+        return to_route('dias-festivos.index');
     }
 
     /**

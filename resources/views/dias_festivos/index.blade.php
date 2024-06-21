@@ -13,7 +13,7 @@
                 <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Añadir
                 </button>
-                <button class="btn btn-secondary" type="button">
+                <button class="btn btn-secondary" type="button" id="editar">
                     Editar
                 </button>
                 <button class="btn btn-secondary" type="button">
@@ -37,7 +37,8 @@
                     <div class="row {{$loop->index != 0 ? 'border-top border-secondary' : ''}}">
                         <div class="col-1 border-end border-secondary">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" />
+                                <input class="form-check-input select-dia-festivo"
+                                    value="{{$dia_festivo->id}}" type="checkbox" />
                             </div>
                         </div>
                         <div class="col-2 border-end border-secondary">{{ $dia_festivo->nombre }}</div>
@@ -56,7 +57,8 @@
             </div>
         </div>
     </div>
-    <!-- Vertically centered modal -->
+    <!-- Añadir dia festivo -->
+    <!-- Modal centrado verticalmente -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -106,6 +108,63 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Añadir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Editar dia festivo -->
+    <!-- Modal centrado verticalmente -->
+    <div class="modal fade" id="editDiaFestivo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content p-4" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="input-group mb-3 d-flex ">
+                    <label for="nombre-editar" class="col-12">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre"
+                    aria-label="Nombre" id="nombre-editar"
+                        name="nombre" value="{{ old('nombre') }}">
+                    @error('nombre')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3 d-flex">
+                    <label for="color-editar" class="col-12">Color</label>
+                    <input type="color" id="color-editar" class="form-control" name="color"
+                        value="{{ old('color') }}">
+                    @error('color')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="input-group mb-3 d-flex">
+                    <label for="dia-editar" class="col-12">Día</label>
+                    <input type="text" id="dia-editar" class="form-control" name="dia"
+                        value="{{ old('dia') }}">
+                    @error('dia')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="input-group mb-3 d-flex">
+                    <label for="mes-editar" class="col-12">Mes</label>
+                    <input type="text" id="mes-editar" class="form-control" name="mes"
+                        value="{{ old('mes') }}">
+                    @error('mes')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="input-group mb-3 d-flex">
+                    <label for="anyo-editar" class="col-12">Año</label>
+                    <input type="text" id="anyo-editar" class="form-control" name="anyo"
+                        value="{{ old('anyo') }}">
+                    @error('anyo')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
             </form>
         </div>
