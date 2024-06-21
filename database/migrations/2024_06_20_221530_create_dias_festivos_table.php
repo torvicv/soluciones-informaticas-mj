@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('dia');
             $table->string('mes');
             $table->string('anyo')->nullable();
-            $table->boolean('recurrente');
+            $table->boolean('recurrente')->default(0);
             $table->timestamps();
         });
     }

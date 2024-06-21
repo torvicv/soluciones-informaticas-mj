@@ -11,7 +11,7 @@ class DiasFestivosRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class DiasFestivosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => 'required|string|unique:dias_festivos,nombre',
+            'color' =>'required|string',
+            'dia' =>'required|string',
+            'mes' =>'required|string',
+            'anyo' =>'nullable|string',
+            'recurrente' =>'boolean',
         ];
     }
 }

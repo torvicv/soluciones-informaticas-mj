@@ -21,8 +21,8 @@
             </a>
             <a class="sidebar-item">
                 <div class="sidebar-item-content">
-                    <x-nav-link :href="route('dashboard')"
-                        class="text-decoration-none w-100 d-flex gap-3 {{request()->routeIs('dashboard') ? 'isActive' : ''}}">
+                    <x-nav-link :href="route('dias-festivos.index')"
+                        class="text-decoration-none w-100 d-flex gap-3 {{request()->routeIs('dias-festivos.index') ? 'isActive' : ''}}">
                         <i class="bi bi-calendar-week-fill"></i> {{ __('Días Festivos') }}
                     </x-nav-link>
                 </div>

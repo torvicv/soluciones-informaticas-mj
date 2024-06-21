@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class DiasFestivos extends Model
 {
     use HasFactory;
+
+    protected $table = 'dias_festivos';
+
+    protected $fillable = [
+        'nombre',
+        'color',
+        'dia',
+        'mes',
+        'anyo',
+        'recurrente'
+    ];
 }

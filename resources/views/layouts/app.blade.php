@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         @include('layouts.sidebar')
-        <div class="bg-gray-400">
+        <div class="bg-gray-400 content">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -33,5 +33,6 @@
                 {{ $slot }}
             </main>
         </div>
+        @stack('scripts-body')
     </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiasFestivosRequest;
 use App\Models\DiasFestivos;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,12 @@ class DiasFestivosController extends Controller
      */
     public function index()
     {
-        //
+        $diasFestivos = DiasFestivos::orderBy('nombre', 'desc')->paginate(10);
+        return view('dias_festivos/index',
+            [
+                'dias_festivos' => $diasFestivos
+            ]
+        );
     }
 
     /**
@@ -26,9 +32,11 @@ class DiasFestivosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DiasFestivosRequest $request)
     {
-        //
+        $validated = $request->validated();
+        DiasFestivos::create($validated);
+        return to_route('dias-festivos.index');
     }
 
     /**
