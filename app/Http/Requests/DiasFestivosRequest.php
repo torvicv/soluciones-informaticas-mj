@@ -30,4 +30,16 @@ class DiasFestivosRequest extends FormRequest
             'recurrente' =>'boolean',
         ];
     }
+
+    /**
+     * Before validation
+     */
+    public function prepareForValidation() {
+        if ($this->recurrente == 'on') {
+            $this->merge(['recurrente' => 1]);
+        } else if ($this->recurrente == null) {
+            $this->merge(['recurrente' => 0]);
+        }
+
+    }
 }

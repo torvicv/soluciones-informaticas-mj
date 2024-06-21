@@ -69,7 +69,7 @@
                     <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" id="nombre"
                         name="nombre" value="{{ old('nombre') }}">
                     @error('nombre')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -78,7 +78,7 @@
                     <input type="color" id="color" class="form-control" name="color"
                         value="{{ old('color') }}">
                     @error('color')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3 d-flex">
@@ -86,7 +86,7 @@
                     <input type="text" id="dia" class="form-control" name="dia"
                         value="{{ old('dia') }}">
                     @error('dia')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3 d-flex">
@@ -94,7 +94,7 @@
                     <input type="text" id="mes" class="form-control" name="mes"
                         value="{{ old('mes') }}">
                     @error('mes')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3 d-flex">
@@ -102,7 +102,15 @@
                     <input type="text" id="anyo" class="form-control" name="anyo"
                         value="{{ old('anyo') }}">
                     @error('anyo')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="input-group mb-3 d-flex">
+                    <label for="recurrente" class="col-12">Es recurrente</label>
+                    <input type="checkbox" id="recurrente" class="form-check-input"
+                        name="recurrente">
+                    @error('recurrente')
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="modal-footer">
@@ -126,7 +134,7 @@
                     aria-label="Nombre" id="nombre-editar"
                         name="nombre" value="{{ old('nombre') }}">
                     @error('nombre')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -135,7 +143,7 @@
                     <input type="color" id="color-editar" class="form-control" name="color"
                         value="{{ old('color') }}">
                     @error('color')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3 d-flex">
@@ -143,7 +151,7 @@
                     <input type="text" id="dia-editar" class="form-control" name="dia"
                         value="{{ old('dia') }}">
                     @error('dia')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3 d-flex">
@@ -151,7 +159,7 @@
                     <input type="text" id="mes-editar" class="form-control" name="mes"
                         value="{{ old('mes') }}">
                     @error('mes')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3 d-flex">
@@ -159,7 +167,15 @@
                     <input type="text" id="anyo-editar" class="form-control" name="anyo"
                         value="{{ old('anyo') }}">
                     @error('anyo')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="col-12 text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="input-group mb-3 d-flex">
+                    <label for="recurrente-editar" class="col-12">Es recurrente</label>
+                    <input type="checkbox" id="recurrente-editar" class="form-check-input"
+                        name="recurrente">
+                    @error('recurrente')
+                        <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="modal-footer">

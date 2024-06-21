@@ -193,13 +193,12 @@ let element = null;
 const calendar = new Calendar('.calendar', {
     language: 'es',
     dataSource: function ({ year }) {
-        // Load data from GitHub API
+        const currentYear = year;
         return fetch(`/dias-festivos/json`)
             .then(result => result.json())
             .then(result => {
                 console.log(result);
                 if (result.dias_festivos.length > 0) {
-                    const currentYear = new Date().getFullYear();
                     return result.dias_festivos.map((r) => {
                         if (r.recurrente) {
                             return ({

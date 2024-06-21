@@ -18,6 +18,11 @@ const editarDiaFestivo = () => {
             $('#dia-editar').val(data.dia_festivo.dia);
             $('#mes-editar').val(data.dia_festivo.mes);
             $('#anyo-editar').val(data.dia_festivo.anyo);
+            if (data.dia_festivo.recurrente) {
+                $('#recurrente-editar').prop('checked', true);
+            } else {
+                $('#recurrente-editar').prop('checked', false);
+            }
             $('#editDiaFestivo form')
             .attr('action', '/dias-festivos/'+ data.dia_festivo.id);
         }
