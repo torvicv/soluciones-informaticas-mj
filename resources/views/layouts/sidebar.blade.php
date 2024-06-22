@@ -29,8 +29,8 @@
             </a>
             <a class="sidebar-item">
                 <div class="sidebar-item-content">
-                    <x-nav-link :href="route('dashboard')"
-                        class="text-decoration-none w-100 d-flex gap-3 {{request()->routeIs('dashboard') ? 'isActive' : ''}}">
+                    <x-nav-link :href="route('users.index')"
+                        class="text-decoration-none w-100 d-flex gap-3 {{request()->routeIs('users.index') ? 'isActive' : ''}}">
                         <i class="bi bi-people"></i> {{ __('Usuarios') }}
                     </x-nav-link>
                 </div>

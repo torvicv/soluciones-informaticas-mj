@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiasFestivosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/{diasFestivos}', [DiasFestivosController::class, 'show'])->name('dias-festivos.show');
         Route::put('/{diasFestivos}', [DiasFestivosController::class, 'update'])->name('dias-festivos.update');
         Route::delete('/{diasFestivos}', [DiasFestivosController::class, 'destroy'])->name('dias-festivos.destroy');
+    });
+
+    // Rutas users
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('users.index');
+        Route::get('/create', [UserController::class, 'create'])->name('users.create');
+        Route::get('/json', [UserController::class, 'json']);
+        Route::post('/', [UserController::class,'store'])->name('users.store');
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
+        Route::put('/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     });
 });
 
