@@ -16,7 +16,7 @@
                 <button class="btn btn-secondary" type="button" id="editar">
                     Editar
                 </button>
-                <button class="btn btn-secondary" type="button">
+                <button class="btn btn-secondary" type="button" id="eliminar">
                     Eliminar
                 </button>
             </div>

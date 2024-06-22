@@ -86,6 +86,7 @@ class DiasFestivosController extends Controller
      */
     public function destroy(DiasFestivos $diasFestivos)
     {
-        //
+        $diasFestivos->delete();
+        return response()->json(['success' => true]);
     }
 }

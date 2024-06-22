@@ -23,3 +23,30 @@ const editarUser = () => {
 }
 
 $('#editar').on('click', editarUser);
+
+const eliminarUsers = () => {
+    if (document.querySelectorAll('.select-user:checked').length < 1) {
+        alert('Debes seleccionar al menos un usuario para eliminar.');
+        return false;
+    }
+    document.querySelectorAll('.select-user:checked').forEach(element => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/users/'+element.value,
+            type: 'delete',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.log('No se pudo eliminar el usuario');
+            }
+        });
+    });
+    location.reload();
+}
+
+$('#eliminar').on('click', eliminarUsers);

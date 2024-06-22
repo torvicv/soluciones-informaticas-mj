@@ -30,3 +30,30 @@ const editarDiaFestivo = () => {
 }
 
 $('#editar').on('click', editarDiaFestivo);
+
+const eliminarDiaFestivo = () => {
+    if (document.querySelectorAll('.select-dia-festivo:checked').length < 1) {
+        alert('Debes seleccionar al menos un usuario para eliminar.');
+        return false;
+    }
+    document.querySelectorAll('.select-dia-festivo:checked').forEach(element => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/dias-festivos/'+element.value,
+            type: 'delete',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.log('No se pudo eliminar el dia');
+            }
+        });
+    });
+    location.reload();
+}
+
+$('#eliminar').on('click', eliminarDiaFestivo);
