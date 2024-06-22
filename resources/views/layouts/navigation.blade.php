@@ -5,14 +5,14 @@
     <!-- Primary Navigation Menu -->
     <div class="navigation">
         <div>
-            <button class="btn" type="button" data-bs-toggle="collapse"
+            <button class="btn fs-1" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                 <i class="bi bi-list"></i>
             </button>
 
             <!-- Settings Dropdown -->
             <div class="">
-                <x-dropdown align="right" width="48">
+                <x-dropdown align="right" width="72">
                     <x-slot name="trigger">
                         <button class="btn dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">

@@ -3,15 +3,25 @@
         background-color: white;
         margin: 16px;
         padding: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
     }
     .months-container {
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: center;
-        align-items: start;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+    @media (min-width: 1190px) {
+        .months-container {
+            grid-template-columns: repeat(6, 1fr);
+        }
     }
 
     .calendar-header {
+        width: 100%;
         table {
             display: flex;
             width: 100%;

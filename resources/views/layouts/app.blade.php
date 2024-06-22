@@ -15,24 +15,31 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        @include('layouts.sidebar')
-        <div class="bg-gray-400 content">
-            @include('layouts.navigation')
+        <div>
+            @include('layouts.sidebar')
+            <div class="bg-gray-400 content">
+                @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+                <!-- Page Heading -->
+                @isset($header)
+                    <header class="bg-white shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endisset
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
         </div>
+        <footer class="col-12 position-fixed bottom-0">
+            <div class="w-100 text-center py-2 bg-white">
+                &copy; 2024 Soluciones informáticas MJ, S.C.A.
+            </div>
+        </footer>
         @stack('scripts-body')
     </body>
 </html>

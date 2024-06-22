@@ -13,16 +13,16 @@
 // Pages
 @import './dashboard/dashboard.scss';
 
-body {
+body > div {
     display: flex;
     width: 100%;
 }
 
-body > div {
+body > div > div {
     background-color: $gray-300;
 }
 
-body > div:first-child {
+body > div > div:first-child {
     min-height: 100vh;
     background-color: $blue-700;
     & * {
@@ -30,7 +30,7 @@ body > div:first-child {
     }
 }
 
-body > div.content {
+body > div > div.content {
     flex: 1;
     min-height: 100%;
 }
