@@ -64,14 +64,21 @@ const quantityResults = () => {
         url: '/dias-festivos?p='+quantity,
         type: 'GET',
         success: function () {
+            let url = '/dias-festivos?p='+quantity;
             const urlParams = new URLSearchParams(location.search);
-            if (urlParams.get('search') == undefined ||
-                urlParams.get('search') == null || urlParams.get('search') == 'undefined' ||
-                urlParams.get('search') == 'null') {
-                location.href = '/dias-festivos?p='+quantity;
-            } else {
-                location.href = '/dias-festivos?p='+quantity+'&search='+urlParams.get('search');
+            if (urlParams.get('search') != undefined &&
+                urlParams.get('search') != null &&
+                urlParams.get('search') != 'undefined' &&
+                urlParams.get('search') != 'null') {
+                url += '&search='+urlParams.get('search');
             }
+            if (urlParams.get('order') != undefined &&
+                urlParams.get('order') != null &&
+                urlParams.get('order') != 'undefined' &&
+                urlParams.get('order') != 'null') {
+                url += '&order='+urlParams.get('order');
+            }
+            location.href = url;
         }
     });
 }
@@ -88,14 +95,59 @@ const searchResults = () => {
         type: 'GET',
         success: function () {
             const urlParams = new URLSearchParams(location.search);
-            if (urlParams.get('p') == undefined || urlParams.get('p') == null ||
-                urlParams.get('p') == 'undefined' || urlParams.get('p') == 'null') {
-                location.href = '/dias-festivos?search='+search;
-            } else {
-                location.href = '/dias-festivos?p='+urlParams.get('p')+'&search='+search;
+            let url = '/dias-festivos?search='+search;
+            if (urlParams.get('p') != undefined &&
+                urlParams.get('p') != null &&
+                urlParams.get('p') != 'undefined' &&
+                urlParams.get('p') != 'null') {
+                url += '&p='+urlParams.get('p');
             }
+            if (urlParams.get('order') != undefined &&
+                urlParams.get('order') != null &&
+                urlParams.get('order') != 'undefined' &&
+                urlParams.get('order') != 'null') {
+                url += '&order='+urlParams.get('order');
+            }
+            location.href = url;
         }
     });
 }
 
+const orderResults = function() {
+    const order = $(this).attr('id');
+    $.ajax({
+        url: '/dias-festivos?order='+order,
+        type: 'GET',
+        success: function () {
+            const urlParams = new URLSearchParams(location.search);
+            let url = '/dias-festivos?order='+order;
+            if (urlParams.get('p') != undefined &&
+                urlParams.get('p') != null &&
+                urlParams.get('p') != 'undefined' &&
+                urlParams.get('p') != 'null') {
+                url += '&p='+urlParams.get('p');
+            }
+            if (urlParams.get('search') != undefined &&
+                urlParams.get('search') != null &&
+                urlParams.get('search') != 'undefined' &&
+                urlParams.get('search') != 'null') {
+                url += '&search='+urlParams.get('search');
+            }
+            location.href = url;
+        }
+    });
+}
+
+$('.order').on('click', orderResults);
+
 $('#buscar-btn').on('click', searchResults);
+
+$('#picker-color').on('keyup', function () {
+    $('#color').val($(this).val());
+});
+
+$('#picker-color-editar').on('keyup', function () {
+    $('#color-editar').val($(this).val());
+});
+
+

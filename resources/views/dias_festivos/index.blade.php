@@ -11,12 +11,15 @@
             </div>
             <div>
                 <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="bi bi-plus"></i>
                     Añadir
                 </button>
                 <button class="btn btn-secondary" type="button" id="editar">
+                    <i class="bi bi-pencil-square"></i>
                     Editar
                 </button>
                 <button class="btn btn-secondary" type="button" id="eliminar">
+                    <i class="bi bi-trash"></i>
                     Eliminar
                 </button>
             </div>
@@ -44,13 +47,49 @@
             <div class="row justify-content-end w-100">
 
                 <div class="row bg-secondary text-white col-12 py-1">
-                    <div class="col-1 text-start border-end border-white">Seleccionar</div>
-                    <div class="col-2 text-start border-end border-white">Nombre</div>
-                    <div class="col-2 text-start border-end border-white">Color</div>
-                    <div class="col-2 text-start border-end border-white">Día</div>
-                    <div class="col-2 text-start border-end border-white">Mes</div>
-                    <div class="col-2 text-start border-end border-white">Año</div>
-                    <div class="col-1 text-start">Recurrente</div>
+                    <div class="col-1 text-start border-end border-white d-flex align-items-center">Seleccionar</div>
+                    <div class="col-2 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Nombre
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='nombre-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="nombre-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-2 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Color
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='color-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="color-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-2 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Día
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='dia-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="dia-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-2 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Mes
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='mes-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="mes-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-2 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Año
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='anyo-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="anyo-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-1 text-start d-flex justify-content-between align-items-center">
+                        Recurrente
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='recurrente-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="recurrente-down"></i>
+                        </div>
+                    </div>
                 </div>
                 @foreach ($dias_festivos as $dia_festivo)
                     <div class="row {{$loop->index != 0 ? 'border-top border-secondary' : ''}}">
@@ -85,7 +124,7 @@
                 @csrf
                 <div class="input-group mb-3 d-flex ">
                     <label for="nombre" class="col-12">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" id="nombre"
+                    <input type="text" class="form-control " placeholder="Nombre" aria-label="Nombre" id="nombre"
                         name="nombre" value="{{ old('nombre') }}">
                     @error('nombre')
                         <div class="col-12 text-danger">{{ $message }}</div>
@@ -94,8 +133,11 @@
 
                 <div class="input-group mb-3 d-flex">
                     <label for="color" class="col-12">Color</label>
-                    <input type="color" id="color" class="form-control" name="color"
+                    <div class="row col-12 gap-2 align-items-center">
+                        <input type="color" id="color" class="col-4 px-3 py-2" name="color"
                         value="{{ old('color') }}">
+                        <input type="text" id="picker-color" class="col-7" placeholder="#000000"/>
+                    </div>
                     @error('color')
                         <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror
@@ -159,8 +201,11 @@
 
                 <div class="input-group mb-3 d-flex">
                     <label for="color-editar" class="col-12">Color</label>
-                    <input type="color" id="color-editar" class="form-control" name="color"
+                    <div class="row col-12 gap-2 align-items-center">
+                        <input type="color" id="color-editar" class="col-4 px-3 py-2" name="color"
                         value="{{ old('color') }}">
+                        <input type="text" id="picker-color-editar" class="col-7" placeholder="#000000"/>
+                    </div>
                     @error('color')
                         <div class="col-12 text-danger">{{ $message }}</div>
                     @enderror

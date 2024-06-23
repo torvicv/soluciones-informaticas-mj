@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -14,16 +14,23 @@ class UserController extends Controller
      */
     public function index()
     {
+        $order = request()->get('order') ?? '';
         $search = request()->get('search') ?? '';
         $quantityPaginate = request()->get('p') ? request()->get('p') : 10;
         if ($search) {
             $users = User::where('name', 'like', '%'. $search. '%')
                 ->orWhere('name', 'like', $search. '%')
                 ->orWhere('email', 'like', $search. '%')
-                ->orWhere('email', 'like', '%'. $search. '%')
-                ->paginate($quantityPaginate);
+                ->orWhere('email', 'like', '%'. $search. '%');
         } else {
-            $users = User::orderBy('name', 'desc')->paginate($quantityPaginate);
+            $users = User::query();
+        }
+        if ($order) {
+            $segments = Str::of($order)->split('/-/');
+            $descOrAsc = $segments[1] === 'up' ? 'desc' : 'asc';
+            $users = $users->orderBy($segments[0], $descOrAsc)->paginate($quantityPaginate);
+        } else {
+            $users = $users->paginate($quantityPaginate);
         }
         return view('users/index',
             [

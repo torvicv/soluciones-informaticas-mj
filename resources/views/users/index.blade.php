@@ -11,12 +11,15 @@
             </div>
             <div>
                 <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="bi bi-plus"></i>
                     Añadir
                 </button>
                 <button class="btn btn-secondary" type="button" id="editar">
+                    <i class="bi bi-pencil-square"></i>
                     Editar
                 </button>
                 <button class="btn btn-secondary" type="button" id="eliminar">
+                    <i class="bi bi-trash"></i>
                     Eliminar
                 </button>
             </div>
@@ -43,10 +46,28 @@
             </div>
             <div class="row justify-content-end w-100">
                 <div class="row bg-secondary text-white col-12 py-1">
-                    <div class="col-2 text-start border-end border-white">Seleccionar</div>
-                    <div class="col-3 text-start border-end border-white">Nombre</div>
-                    <div class="col-4 text-start border-end border-white">Email</div>
-                    <div class="col-3 text-start">Creado</div>
+                    <div class="col-2 text-start border-end border-white d-flex align-items-center">Seleccionar</div>
+                    <div class="col-3 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Nombre
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='name-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="name-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-4 text-start border-end border-white d-flex justify-content-between align-items-center">
+                        Email
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='email-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="email-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-3 text-start d-flex justify-content-between align-items-center">
+                        Creado
+                        <div class="d-flex flex-column">
+                            <i class="bi bi-caret-up-fill order" id='created_at-up'></i>
+                            <i class="bi bi-caret-down-fill order" id="created_at-down"></i>
+                        </div>
+                    </div>
                 </div>
                 @foreach ($users as $user)
                     <div class="row {{$loop->index != 0 ? 'border-top border-secondary' : ''}}">
