@@ -22,6 +22,25 @@
             </div>
         </div>
         <div class="m-1 p-2 bg-white">
+            <div class="d-flex justify-content-between align-items-center mx-1 mb-2">
+                <div class="w-25">
+                    Mostrar
+                    <select class="w-25 rounded" id="cantidad-registros">
+                        <option @selected($quantityPaginate == 5) value="5">5</option>
+                        <option @selected($quantityPaginate == 10) value="10">10</option>
+                        <option @selected($quantityPaginate == 15) value="15">15</option>
+                        <option @selected($quantityPaginate == 20) value="20">20</option>
+                        <option @selected($quantityPaginate == 25) value="25">25</option>
+                    </select>
+                    registros
+                </div>
+                <div class="w-25 d-flex align-items-center">
+                    <input type="text" class="form-control" placeholder="Buscar" id="buscar" value="{{$search}}" />
+                    <button class="btn btn-secondary" type="button" id="buscar-btn">
+                        Buscar
+                    </button>
+                </div>
+            </div>
             <div class="row justify-content-end w-100">
 
                 <div class="row bg-secondary text-white col-12 py-1">

@@ -50,3 +50,42 @@ const eliminarUsers = () => {
 }
 
 $('#eliminar').on('click', eliminarUsers);
+
+const quantityResults = () => {
+    const quantity = document.getElementById('cantidad-registros').value;
+    $.ajax({
+        url: '/users?p='+quantity,
+        type: 'GET',
+        success: function () {
+            const urlParams = new URLSearchParams(location.search);
+            if (urlParams.get('search') == undefined ||
+                urlParams.get('search') == null || urlParams.get('search') == 'undefined' ||
+                urlParams.get('search') == 'null') {
+                location.href = '/users?p='+quantity;
+            } else {
+                location.href = '/users?p='+quantity+'&search='+urlParams.get('search');
+            }
+        }
+    });
+}
+
+$('#cantidad-registros').on('change', quantityResults);
+
+const searchResults = () => {
+    const search = document.getElementById('buscar').value;
+    $.ajax({
+        url: '/users?search='+search,
+        type: 'GET',
+        success: function () {
+            const urlParams = new URLSearchParams(location.search);
+            if (urlParams.get('p') == undefined || urlParams.get('p') == null ||
+                urlParams.get('p') == 'undefined' || urlParams.get('p') == 'null') {
+                location.href = '/users?search='+search;
+            } else {
+                location.href = '/users?p='+urlParams.get('p')+'&search='+search;
+            }
+        }
+    });
+}
+
+$('#buscar-btn').on('click', searchResults);

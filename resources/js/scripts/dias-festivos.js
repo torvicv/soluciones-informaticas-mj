@@ -57,3 +57,45 @@ const eliminarDiaFestivo = () => {
 }
 
 $('#eliminar').on('click', eliminarDiaFestivo);
+
+const quantityResults = () => {
+    const quantity = document.getElementById('cantidad-registros').value;
+    $.ajax({
+        url: '/dias-festivos?p='+quantity,
+        type: 'GET',
+        success: function () {
+            const urlParams = new URLSearchParams(location.search);
+            if (urlParams.get('search') == undefined ||
+                urlParams.get('search') == null || urlParams.get('search') == 'undefined' ||
+                urlParams.get('search') == 'null') {
+                location.href = '/dias-festivos?p='+quantity;
+            } else {
+                location.href = '/dias-festivos?p='+quantity+'&search='+urlParams.get('search');
+            }
+        }
+    });
+}
+
+$('#cantidad-registros').on('change', quantityResults);
+
+const searchResults = () => {
+    let search = document.getElementById('buscar').value;
+    if (search.startsWith('#')) {
+        search = search.substring(1);
+    }
+    $.ajax({
+        url: '/dias-festivos?search='+search,
+        type: 'GET',
+        success: function () {
+            const urlParams = new URLSearchParams(location.search);
+            if (urlParams.get('p') == undefined || urlParams.get('p') == null ||
+                urlParams.get('p') == 'undefined' || urlParams.get('p') == 'null') {
+                location.href = '/dias-festivos?search='+search;
+            } else {
+                location.href = '/dias-festivos?p='+urlParams.get('p')+'&search='+search;
+            }
+        }
+    });
+}
+
+$('#buscar-btn').on('click', searchResults);

@@ -14,10 +14,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('name', 'desc')->paginate(10);
+        $search = request()->get('search') ?? '';
+        $quantityPaginate = request()->get('p') ? request()->get('p') : 10;
+        if ($search) {
+            $users = User::where('name', 'like', '%'. $search. '%')
+                ->orWhere('name', 'like', $search. '%')
+                ->orWhere('email', 'like', $search. '%')
+                ->orWhere('email', 'like', '%'. $search. '%')
+                ->paginate($quantityPaginate);
+        } else {
+            $users = User::orderBy('name', 'desc')->paginate($quantityPaginate);
+        }
         return view('users/index',
             [
-                'users' => $users
+                'users' => $users,
+                'quantityPaginate' => $quantityPaginate,
+                'search' => $search
             ]
         );
     }

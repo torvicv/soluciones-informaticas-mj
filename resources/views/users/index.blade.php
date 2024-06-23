@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="">
-            {{ __('Días Festivos') }}
+            {{ __('Usuarios') }}
         </h2>
     </x-slot>
     <div class="m-3">
         <div>
             <div class="fs-3">
-                Listado Días Festivos
+                Listado Usuarios
             </div>
             <div>
                 <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -22,8 +22,26 @@
             </div>
         </div>
         <div class="m-1 p-2 bg-white">
+            <div class="d-flex justify-content-between align-items-center mx-1 mb-2">
+                <div class="w-25">
+                    Mostrar
+                    <select class="w-25 rounded" id="cantidad-registros">
+                        <option @selected($quantityPaginate == 5) value="5">5</option>
+                        <option @selected($quantityPaginate == 10) value="10">10</option>
+                        <option @selected($quantityPaginate == 15) value="15">15</option>
+                        <option @selected($quantityPaginate == 20) value="20">20</option>
+                        <option @selected($quantityPaginate == 25) value="25">25</option>
+                    </select>
+                    registros
+                </div>
+                <div class="w-25 d-flex align-items-center">
+                    <input type="text" class="form-control" placeholder="Buscar" id="buscar" value="{{$search}}" />
+                    <button class="btn btn-secondary" type="button" id="buscar-btn">
+                        Buscar
+                    </button>
+                </div>
+            </div>
             <div class="row justify-content-end w-100">
-
                 <div class="row bg-secondary text-white col-12 py-1">
                     <div class="col-2 text-start border-end border-white">Seleccionar</div>
                     <div class="col-3 text-start border-end border-white">Nombre</div>
